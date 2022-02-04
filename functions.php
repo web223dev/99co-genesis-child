@@ -32,10 +32,10 @@ function ea_global_enqueues() {
 	// javascript
 	if( ! ea_is_amp() ) { 
 		wp_enqueue_script( 'ea-global', get_stylesheet_directory_uri() . '/assets/js/global-min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/global-min.js' ), true );
-        // TailwindCSS CDN
-		wp_enqueue_script( 'cb-script', get_stylesheet_directory_uri() . '/assets/js/tailwindcss.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/tailwindcss.js' ), false );
 		// AlpineJS CDN
 		wp_enqueue_script( 'cb-alpinejs', get_stylesheet_directory_uri() . '/assets/js/alpine.min.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/alpine.min.js' ), false );
+		// TailwindCSS CDN
+		wp_enqueue_script( 'cb-script', get_stylesheet_directory_uri() . '/assets/js/tailwindcss.js', array( 'jquery' ), filemtime( get_stylesheet_directory() . '/assets/js/tailwindcss.js' ), false );
 
 		// Move jQuery to footer
 		if( ! is_admin() ) {

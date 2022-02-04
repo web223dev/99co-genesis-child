@@ -41,7 +41,7 @@ function cb_tailwind_config(){
                         sm: ['.875rem', '1rem'],
                     },
                     colors: {
-                        'cbneutral-300': '#1A2258',
+                        'cbspacecadet-300': '#1A2258',
                         'cbblue-100': '#F0F6FF',
                         'cblavender-100': '#faf6ff',
                         'cblavender-300': '#844be3'
