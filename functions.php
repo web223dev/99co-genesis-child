@@ -49,6 +49,8 @@ function ea_global_enqueues() {
 	wp_dequeue_style( 'child-theme' );
 	wp_enqueue_style( 'ea-fonts', ea_theme_fonts_url() );
 	// wp_enqueue_style( 'ea-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/main.css' ) );
+	// Swiper Slider
+	wp_enqueue_style( 'cb-swiper', '//unpkg.com/swiper@8/swiper-bundle.min.css', array(), true );
 }
 add_action( 'wp_enqueue_scripts', 'ea_global_enqueues' );
 
@@ -115,7 +117,6 @@ function ea_child_theme_setup() {
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	include_once( get_stylesheet_directory() . '/inc/template-tags.php' );
 	include_once( get_stylesheet_directory() . '/inc/site-footer.php' );
-	include_once( get_stylesheet_directory() . '/inc/header.php' );
 
 	// Editor
 	include_once( get_stylesheet_directory() . '/inc/disable-editor.php' );
@@ -131,6 +132,9 @@ function ea_child_theme_setup() {
 	include_once( get_stylesheet_directory() . '/inc/amp.php' );
 	include_once( get_stylesheet_directory() . '/inc/shared-counts.php' );
 	include_once( get_stylesheet_directory() . '/inc/wpforms.php' );
+		
+	// Kelton Work
+	include_once( get_stylesheet_directory() . '/kelton-functions.php' );
 
 	// Editor Styles
 	add_theme_support( 'editor-styles' );

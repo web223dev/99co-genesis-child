@@ -3,7 +3,7 @@
  * Site Header
  *
  * @package      CBGenesisChild
- * @author       Chillybin
+ * @author       Chillybin - Kelton 
  * @since        1.0.0
  * @license      GPL-2.0+
 **/
@@ -88,7 +88,7 @@ add_action('wp_head', 'cb_add_custom_font');
  */
 function cb_avenirnext_font_body_class( $classes ) {
 	if( is_singular() )
-		$classes[] = 'font-avenirnext-medium';
+		$classes[] = 'font-avenirnext-regular';
 	return $classes;
 }
 add_filter( 'body_class', 'cb_avenirnext_font_body_class' );

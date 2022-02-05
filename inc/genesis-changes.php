@@ -13,7 +13,7 @@ add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list'
 add_theme_support( 'genesis-responsive-viewport' );
 add_theme_support( 'genesis-structural-wraps', array( 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
 add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu', 'secondary' => 'Secondary Navigation Menu' ) );
-add_theme_support( 'genesis-footer-widgets', 3 );
+add_theme_support( 'genesis-footer-widgets', 1 );
 
 // Adds support for accessibility.
 add_theme_support(
@@ -56,7 +56,7 @@ remove_action( 'genesis_entry_footer', 'genesis_post_meta' );
 // Remove unused sidebars
 unregister_sidebar( 'header-right' );
 unregister_sidebar( 'sidebar-alt' );
-
+	
 /**
  * Remove Genesis Templates
  *

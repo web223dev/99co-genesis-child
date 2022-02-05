@@ -14,9 +14,9 @@
 add_action( 'cb_content_area', 'cb_home_slider' );
 function cb_home_slider() { ?>
     <?php echo cb_property_news_insider(); ?>
-
     <div class="home-section slider">
-        <div class="lists-wrapper">
+        <div class="lists-wrapper swiper text-center w-full max-h-[630px] rounded mainSwiper">
+			<div class="swiper-wrapper">
 			<?php
 			$args  = array(
 				'post_type'      => 'post',
@@ -39,7 +39,7 @@ function cb_home_slider() { ?>
 					}
 
 					?>
-                    <div class="inner">
+                    <div class="inner swiper-slide">
 						<?php if ( get_field( '_99co_featured_video' ) ) {
 							$class = 'image overlay-video';
 						} else {
@@ -47,7 +47,7 @@ function cb_home_slider() { ?>
 						} ?>
                         <div class="<?php echo $class; ?>">
                             <a href="<?php the_permalink(); echo '?utm_source=blog&utm_medium=spotlight_carousel' ?>">
-								<?php the_post_thumbnail( 'slider-size' ); ?>
+								<?php the_post_thumbnail( 'slider-size', array('class' => 'min-h-[300px] object-cover swiper-lazy') ); ?>
                             </a>
                         </div>
                         <div class="overlay">
@@ -75,6 +75,17 @@ function cb_home_slider() { ?>
 			}
 			wp_reset_postdata();
 			?>
+        	</div>
+			<!-- If we need pagination -->
+			<div class="swiper-pagination"></div>
+	
+			<!-- If we need navigation buttons -->
+			<div class="cb-button-prev left-[12.52px] sm:left-[35.52px] right-auto absolute top-1/2 z-10 cursor-pointer flex items-center justify-center">
+				<svg width="17" height="28" viewBox="0 0 17 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.32 27.33c.36.34.8.53 1.3.53 1.04 0 1.85-.81 1.85-1.85 0-.51-.2-.98-.56-1.34L4.97 13.98 15.91 3.33c.36-.36.56-.85.56-1.35 0-1.03-.8-1.84-1.86-1.84-.5 0-.93.19-1.28.53L1.18 12.55c-.44.4-.66.9-.66 1.45 0 .55.22 1.01.64 1.44l12.16 11.89z" fill="#fff"></path></svg>
+			</div>
+			<div class="cb-button-next right-[12.52px] sm:right-[35.52px] left-auto absolute top-1/2 z-10 cursor-pointer flex items-center justify-center">
+				<svg width="17" height="28" viewBox="0 0 17 28" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.36 27.86c.52 0 .94-.19 1.3-.53L15.8 15.45a2 2 0 00.64-1.45c0-.55-.2-1.03-.64-1.44L3.66.67a1.8 1.8 0 00-1.3-.53C1.3.14.5.95.5 1.98c0 .5.22.99.56 1.35l10.96 10.69L1.06 24.66a1.9 1.9 0 00-.56 1.34c0 1.04.81 1.85 1.86 1.85z" fill="#fff"></path></svg>
+			</div>
         </div>
     </div>
 

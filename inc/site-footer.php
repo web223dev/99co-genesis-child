@@ -22,3 +22,52 @@ function ea_site_footer() {
 }
 add_action( 'genesis_footer', 'ea_site_footer' );
 remove_action( 'genesis_footer', 'genesis_do_footer' );
+
+/**
+ * Tailwindcss configuration
+ */
+add_action( 'wp_footer', 'cb_swiper_slide_config' );
+function cb_swiper_slide_config(){
+?>
+	<script type="module">
+		import Swiper from 'https://unpkg.com/swiper@8/swiper-bundle.esm.browser.min.js'
+		
+		var swiper = new Swiper('.mainSwiper', {
+			// Optional parameters
+			direction: 'horizontal',
+			loop: true,
+
+			// If we need pagination
+			pagination: {
+				el: ".swiper-pagination",
+				dynamicBullets: true,
+				dynamicMainBullets: 4
+			},
+
+			// Navigation arrows
+			navigation: {
+				nextEl: '.cb-button-next',
+				prevEl: '.cb-button-prev',
+			},
+			lazy: true,
+		});
+
+		var swiper2 = new Swiper(".latestVideoSwiper", {
+			slidesPerView: 3,
+			spaceBetween: 32,
+			pagination: {
+				el: ".swiper-pagination",
+				clickable: true,
+				dynamicBullets: true,
+				dynamicMainBullets: 2
+			},
+			// Navigation arrows
+			navigation: {
+				nextEl: '.cb-button-next',
+				prevEl: '.cb-button-prev',
+			},
+			lazy: true,
+		});
+	</script>
+<?php
+}
