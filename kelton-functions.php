@@ -14,10 +14,18 @@
 // add_filter( 'genesis_attr_site-header', 'cb_add_attrs_site_header' );
 function cb_add_attrs_site_header( $attributes ) {
  
-    $attributes['class'] = 'site-header bg-white shadow';
+    $attributes['class'] = ' bg-white shadow';
     $attributes['x-data'] = '{mobileMenuOpen: false}';
     $attributes['@click.outside'] = 'mobileMenuOpen = false';
-
+    return $attributes;
+}
+/**
+ * Add attribute and classnames in <footer> tag
+ */
+add_filter( 'genesis_attr_site-footer', 'cb_add_attrs_site_footer' );
+function cb_add_attrs_site_footer( $attributes ) {
+ 
+    $attributes['class'] .= ' bg-[#0E1545]';
     return $attributes;
 }
 
@@ -92,3 +100,29 @@ function cb_avenirnext_font_body_class( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'cb_avenirnext_font_body_class' );
+
+
+/**
+ * Footer Widget 
+ * 
+ * will move to site-footer.php
+ */
+
+// Register Widget
+genesis_register_widget_area( array( 'id' => 'footer-section-1', 'name' => 'Footer Section 1' ) );
+genesis_register_widget_area( array( 'id' => 'footer-section-2', 'name' => 'Footer Section 2' ) );
+genesis_register_widget_area( array( 'id' => 'footer-section-3', 'name' => 'Footer Section 3' ) );
+
+// // Display Footer Widget before footer
+add_action( 'genesis_before_footer', 'cb_footer_widget' );
+function cb_footer_widget() {
+    genesis_widget_area( 'footer-section-1', array(
+        'before' => '<div class="flexible-widgets widget-area">',
+        'after'  => '</div>',
+    ) );
+
+    // $menu = get_term( $locations[$theme_location], 'nav_menu' );
+    // $menu_items = wp_get_nav_menu_items($menu->term_id);
+    // print_r($menu_items)
+    
+}

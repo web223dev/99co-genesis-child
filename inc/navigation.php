@@ -20,7 +20,7 @@ function ea_site_header() {
 	// echo ea_mobile_menu_toggle();
 	// echo ea_search_toggle();
 
-	echo '<nav' . ea_amp_class( 'nav-menu bg-white border-b border-[#EAEBF0] font-avenirnext-demi', 'active', 'menuActive' ) . ' x-data="{mobileMenuOpen: false}" @click.outside="mobileMenuOpen = false" role="navigation">';
+	echo '<nav' . ea_amp_class( 'nav-menu bg-white border-b border-[#EAEBF0] font-avenirnext-demi', 'active', 'menuActive' ) . ' x-data="{mobileMenuOpen: false}" @click.outside="mobileMenuOpen = false" x-cloak role="navigation">';
 		echo '<div class="mx-auto px-4 sm:px-6 lg:px-8">';
             echo '<div class="flex justify-between h-16">';
                 echo '<div class="flex px-2 lg:px-0">';
@@ -28,7 +28,7 @@ function ea_site_header() {
                     do_action( 'cb_genesis_site_title' );
 
                     if( has_nav_menu( 'primary' ) ) {
-                        wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'hidden lg:ml-6 lg:flex lg:space-x-8', 'container_class' => 'nav-primary flex', 'walker' => new Primary_Walker_Nav_Menu() ) );
+                        wp_nav_menu( array( 'theme_location' => 'primary', 'menu_id' => 'primary-menu', 'menu_class' => 'primary_menu hidden lg:ml-6 lg:flex lg:space-x-8', 'container_class' => 'nav-primary flex', 'walker' => new Primary_Walker_Nav_Menu() ) );
                     }
 
                 echo '</div>';
@@ -40,16 +40,18 @@ function ea_site_header() {
 		echo '</div>';
 	echo '</nav>';
 
-    echo '<nav' . ea_amp_class( 'nav-menu bg-white border-b border-[#EAEBF0]', 'active', 'menuActive' ) . ' x-data="{mobileMenuOpen: false}" @click.outside="mobileMenuOpen = false" role="navigation">';
+    echo '<nav' . ea_amp_class( 'nav-menu bg-white border-b border-[#EAEBF0] font-avenirnext-medium', 'active', 'menuActive' ) . ' x-data="{mobileMenuOpen: false}" @click.outside="mobileMenuOpen = false" x-cloak role="navigation">';
 		echo '<div class="mx-auto px-4 sm:px-6 lg:px-8">';
             echo '<div class="flex justify-between h-16">';
                 echo '<div class="flex px-2 lg:px-0">';
-
-                    do_action( 'cb_genesis_site_title' );
+                    echo '<div class="site-title flex-shrink-0 flex items-center w-[82.9833px] justify-center">';
+                        echo '<a href="' . home_url() . '">' . get_bloginfo( 'name' ) . '<img class="block h-4 w-auto" src="' . get_stylesheet_directory_uri() . '/assets/images/insider_logo.svg" alt="Insider Logo"></a>';
+                    echo '</div>';
 
                     if( has_nav_menu( 'secondary' ) ) {
-                        wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu', 'menu_class' => 'hidden lg:ml-6 lg:flex lg:space-x-8', 'container_class' => 'nav-secondary flex', 'walker' => new Secondary_Walker_Nav_Menu() ) );
+                        wp_nav_menu( array( 'theme_location' => 'secondary', 'menu_id' => 'secondary-menu', 'menu_class' => 'secondary_menu hidden lg:ml-6 lg:flex lg:space-x-8', 'container_class' => 'nav-secondary flex', 'walker' => new Secondary_Walker_Nav_Menu() ) );
                     }
+
                 echo '</div>';
                 // Search bar
                 echo '<div' . ea_amp_class( 'header-search flex-1 flex items-center justify-center px-2 lg:ml-6 lg:justify-end', 'active', 'searchActive' ) . '>' . get_search_form( array( 'echo' => false ) ) . '</div>';
@@ -374,14 +376,14 @@ add_action( 'cb_genesis_site_title', 'genesis_seo_site_title' );
  * Add Site Description to Title 
  *
  */
-function be_desc_in_title( $title, $inside, $wrap ) {
+function cb_desc_in_title( $title, $inside, $wrap ) {
 
     $wrap   = 'div';
-	$inside = '<a href="' . home_url() . '">' . get_bloginfo( 'name' ) . ' <img class="block h-8 w-auto" src="//www.99.co/spa-assets/web-icons/logo.png" alt="99.co property website singapore"></img></a>';
+	$inside = '<a href="' . home_url() . '">' . get_bloginfo( 'name' ) . ' <img class="block h-[31.11px] w-auto" src="' . get_stylesheet_directory_uri() . '/assets/images/logo.png" alt="99.co property website singapore"></img></a>';
 	
 	//* Build the title
 	$title  = genesis_html5() ? sprintf( "<{$wrap} %s>", genesis_attr( 'site-title', ['class' => 'site-title flex-shrink-0 flex items-center'] ) ) : sprintf( '<%s id="title">%s</%s>', $wrap, $inside, $wrap );
 	$title .= genesis_html5() ? "{$inside}</{$wrap}>" : '';
 	return $title;	
 }
-add_filter( 'genesis_seo_title', 'be_desc_in_title', 10, 3 );
+add_filter( 'genesis_seo_title', 'cb_desc_in_title', 10, 3 );
