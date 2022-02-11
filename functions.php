@@ -49,6 +49,7 @@ function ea_global_enqueues() {
 	wp_dequeue_style( 'child-theme' );
 	wp_enqueue_style( 'ea-fonts', ea_theme_fonts_url() );
 	// wp_enqueue_style( 'ea-style', get_stylesheet_directory_uri() . '/assets/css/main.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/main.css' ) );
+	wp_enqueue_style( 'cb-style', get_stylesheet_directory_uri() . '/assets/css/cb-style.css', array(), filemtime( get_stylesheet_directory() . '/assets/css/cb-style.css' ) );
 	// Swiper Slider
 	wp_enqueue_style( 'cb-swiper', '//unpkg.com/swiper@8/swiper-bundle.min.css', array(), true );
 }
@@ -117,6 +118,7 @@ function ea_child_theme_setup() {
 	include_once( get_stylesheet_directory() . '/inc/author-box.php' );
 	include_once( get_stylesheet_directory() . '/inc/template-tags.php' );
 	include_once( get_stylesheet_directory() . '/inc/site-footer.php' );
+	include_once( get_stylesheet_directory() . '/inc/kelton-comments.php' );
 
 	// Editor
 	include_once( get_stylesheet_directory() . '/inc/disable-editor.php' );
@@ -223,3 +225,23 @@ function ea_template_hierarchy( $template ) {
 	return $template;
 }
 add_filter( 'template_include', 'ea_template_hierarchy' );
+
+// add_filter('genesis_breadcrumb_args', 'modify_separator_breadcrumbs');
+function modify_separator_breadcrumbs($args) {
+    $args['sep'] = ' <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M1.23047 11.2842C1.45898 11.2842 1.64062 11.2021 1.79883 11.0498L6.29297 6.66113C6.49219 6.46191 6.58594 6.25684 6.5918 6.00488C6.5918 5.75293 6.49805 5.54199 6.29297 5.34863L1.79883 0.954102C1.64062 0.801758 1.45312 0.719727 1.23047 0.719727C0.773438 0.719727 0.410156 1.08301 0.410156 1.53418C0.410156 1.75684 0.503906 1.96777 0.667969 2.13184L4.65234 6.00488L0.667969 9.87207C0.503906 10.0361 0.410156 10.2471 0.410156 10.4697C0.410156 10.9209 0.773438 11.2842 1.23047 11.2842Z"
+                                    fill="#9A9EB5"
+                                ></path>
+                            </svg> ';
+    return $args;
+}
+
+// function be_add_blog_crumb( $crumb, $args ) {
+// 	if ( is_singular( 'post' ) || is_category() )
+// 		return '<a href="' . get_permalink( get_option( 'page_for_posts' ) ) . '">' . get_the_title( get_option( 'page_for_posts' ) ) .'</a> ' . $args['sep'] . ' ' . $crumb;
+// 	else
+// 		return $crumb;
+// }
+// add_filter( 'genesis_single_crumb', 'be_add_blog_crumb', 10, 2 );
+// add_filter( 'genesis_archive_crumb', 'be_add_blog_crumb', 10, 2 );

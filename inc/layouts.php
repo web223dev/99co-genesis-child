@@ -23,8 +23,8 @@ genesis_register_layout( 'content', [ 'label' => __( 'Content', 'ea_genesis_chil
 remove_theme_support( 'genesis-archive-layouts' );
 
 // Don't load default data into empty sidebar
-remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
-add_action( 'genesis_sidebar', function() { dynamic_sidebar( 'sidebar' ); } );
+// remove_action( 'genesis_sidebar', 'genesis_do_sidebar' );
+// add_action( 'genesis_sidebar', function() { dynamic_sidebar( 'sidebar' ); } );
 
 // Add New Sidebars
 // genesis_register_widget_area( array( 'id' => 'blog-sidebar', 'name' => 'Blog Sidebar' ) );

@@ -171,7 +171,7 @@ function ea_remove_avatars_from_comments( $avatar ) {
 	global $in_comment_loop;
 	return $in_comment_loop ? '' : $avatar;
 }
-add_filter( 'get_avatar', 'ea_remove_avatars_from_comments' );
+// add_filter( 'get_avatar', 'ea_remove_avatars_from_comments' );
 
 /**
  * Comment form, button class
