@@ -39,12 +39,12 @@ function cb_tailwind_config(){
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        'avenirnext-bold': "'Avenir Next Bold'",
-                        'avenirnext-demi': "'Avenir Next Demi'",
-                        'avenirnext-medium': "'Avenir Next Medium'",
-                        'avenirnext-regular': "'Avenir Next Regular'",
-                    },
+                    // fontFamily: {
+                    //     'avenirnext-bold': "'Avenir Next Bold'",
+                    //     'avenirnext-demi': "'Avenir Next Demi'",
+                    //     'avenirnext-medium': "'Avenir Next Medium'",
+                    //     'avenirnext-regular': "'Avenir Next Regular'",
+                    // },
                     fontSize: {
                         sm: ['.875rem', '1rem'],
                     },
@@ -53,7 +53,10 @@ function cb_tailwind_config(){
                         'cbblue-100': '#F0F6FF',
                         'cblavender-100': '#faf6ff',
                         'cblavender-300': '#844be3'
-                    }
+                    },
+                    boxShadow: {        
+                        'sidebar': '0 4px 16px rgb(11 17 52 / 20%);',
+                    },
                 }                
             }
         }
@@ -68,22 +71,80 @@ function cb_add_custom_font() {
 	?>
     <style type="text/tailwindcss">
 			@layer base {
-				@font-face {
-					font-family: 'Avenir Next Bold';
-					src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Bold.woff") format("woff");
-				}
-				@font-face {
-					font-family: 'Avenir Next Demi';
-					src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Demi.woff") format("woff");
-				}
-				@font-face {
-					font-family: 'Avenir Next Medium';
-					src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Medium.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Medium.woff") format("woff");
-				}
-				@font-face {
-					font-family: 'Avenir Next Regular';
-					src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Regular.woff") format("woff");
-				}
+                @font-face {
+                    font-family: 'Avenir Next';
+                    src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Bold.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Bold.woff") format("woff");
+                    font-weight: 700;
+                }
+                @font-face {
+                    font-family: 'Avenir Next';
+                    src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Demi.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Demi.woff") format("woff");
+                    font-weight: 600;
+                }
+                @font-face {
+                    font-family: 'Avenir Next';
+                    src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Medium.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Medium.woff") format("woff");
+                    font-weight: 500;
+                }
+                @font-face {
+                    font-family: 'Avenir Next';
+                    src: url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Regular.woff2") format("woff2"), url("<?php echo get_stylesheet_directory_uri(); ?>/fonts/AvenirNextLTPro-Regular.woff") format("woff");
+                    font-weight: 400;
+                }
+                html,body{
+                    font-family: 'Avenir Next'; 
+                    font-weight: 400;
+                    color: #1A2258;
+                }
+                h1{
+                    font-size: 34px;
+                }
+                h2{
+                    font-size: 28px;
+                }
+                h3{
+                    font-size: 19px;
+                }
+                h3,h4,h5,h6{
+                    font-weight: 600;
+                }
+                strong{ 
+                    font-weight: 700;
+                }
+                /* Navigation */
+                /* #nav-menu-item-34 .sub-sub-menu-item .sub-menu-link,
+                #nav-menu-item-35 .sub-sub-menu-item .sub-menu-link {
+                    padding: 16px;
+                }
+                #nav-menu-item-64 ul.sub-menu,
+                #nav-menu-item-67 ul.sub-menu  {
+                    flex-direction: column;
+                    width: 337px;
+                    align-items: baseline;
+                }
+                #nav-menu-item-64 ul.sub-menu .sub-menu-item,
+                #nav-menu-item-67 ul.sub-menu .sub-menu-item {
+                    min-width: 100%;
+                    border-radius: 4px;
+                }
+                #nav-menu-item-64 ul.sub-menu .sub-menu-link,
+                #nav-menu-item-67 ul.sub-menu .sub-menu-link {
+                    padding: 16px 16px 40px 55px;
+                    width: 100%;
+                    color: inherit;
+                    display: flex;
+                    align-items: center;
+                    text-transform: none;
+                    font-size: .875rem;
+                    line-height: 19px;
+                }
+                #nav-menu-item-64 ul.sub-menu .sub-menu-item:hover,
+                #nav-menu-item-67 ul.sub-menu .sub-menu-item:hover {
+                    --tw-text-opacity: 1;
+                    --tw-bg-opacity: 1;
+                    color: rgb(37 99 235 / var(--tw-text-opacity));
+                    background-color: rgb(240 246 255 / var(--tw-bg-opacity));
+                } */
 			}
 		</style>
     <?php
