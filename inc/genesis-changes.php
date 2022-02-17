@@ -12,7 +12,14 @@
 add_theme_support( 'html5', array( 'search-form', 'comment-form', 'comment-list', 'gallery', 'caption' ) );
 add_theme_support( 'genesis-responsive-viewport' );
 add_theme_support( 'genesis-structural-wraps', array( 'menu-secondary', 'site-inner', 'footer-widgets', 'footer' ) );
-add_theme_support( 'genesis-menus', array( 'primary' => 'Primary Navigation Menu', 'secondary' => 'Secondary Navigation Menu' ) );
+add_theme_support( 'genesis-menus', array( 
+	'primary' => 'Primary Navigation Menu', 
+	'secondary' => 'Secondary Navigation Menu', 
+	'footer_section_1_1' => 'Footer Section One First Menu', 
+	'footer_section_1_2' => 'Footer Section One Second Menu',
+	'footer_section_2_1' => 'Footer Section Two First Menu',
+	'footer_section_2_2' => 'Footer Section Two Second Menu' 
+));
 add_theme_support( 'genesis-footer-widgets', 0 );
 
 // Adds support for accessibility.
